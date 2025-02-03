@@ -1,0 +1,22 @@
+*{
+    background-color: #F2921D;
+}
+
+/*.circle{
+    background-color: #ECEBEB;
+    width: 200px;
+    height: 200px;
+    border-radius: 100% ;
+    box-shadow: 0 1px 1px black;
+}*/
+
+.login{
+    background-color: #EEEEEE;
+    width: 620px;
+    height: 723px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 80px;
+}
