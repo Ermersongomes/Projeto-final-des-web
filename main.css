@@ -20,3 +20,21 @@
     align-items: center;
     border-radius: 80px;
 }
+@media (max-width: 768px) {
+    .login {
+        width: 90%;
+        max-width: 500px;
+        max-height: 500px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login {
+        width: 90%;
+        max-width: 350px;
+        max-height: 400px;
+        padding: 10px;
+        border-radius: 60px;
+    }
+}
