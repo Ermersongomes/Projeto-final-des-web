@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: white;
+            margin: 0; /* Remove margens padrões */
+            padding: 0; /* Remove paddings padrões */
+        }
+
+        .box-body {
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 70px; /* Para compensar o cabeçalho fixo */
+            width: 90%;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            width: 100%; /* Garante que o header ocupe toda a largura da tela */
+            position: fixed; /* Fixa o cabeçalho no topo */
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Garante que o cabeçalho fique acima de outros conteúdos */
+        }
+
+        header i {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .box-card{
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            
+        }
+
+        .card {
+            width: 500px;
+            height: 265px;
+            background-color: #f97316;
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .button {
+            background-color: #d1d5db;
+            color: #000000;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: #f97316;
+            padding: 1rem;
+            border-radius: 1rem 1rem 0 0;
+            text-align: center;
+            width: 100%;
+            margin-top: 550px; /* Faz com que o footer vá para o final da tela */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-body">
+        <!-- Cabeçalho fixo -->
+        <header>
+            <i class="fas fa-bars">☰</i> <!-- Ícone de menu -->
+            <h1>Infinity Bank</h1>
+            <i class="fas fa-bell">🔔</i> <!-- Ícone de notificação -->
+        </header>
+
+        <div class="box-card">
+            <div class="card">cartão 1</div>
+            <div class="card">cartão 2</div>
+            <div class="card">cartão 3</div>
+        </div>
+
+        <div class="option">
+            <div>saldo</div>
+            <div>faturas</div>
+        </div>
+
+        <div class="footer">menu</div>
+    </div>
+</body>
+
+</html>
