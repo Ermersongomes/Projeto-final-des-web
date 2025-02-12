@@ -92,12 +92,62 @@
         }
 
         .card {
+
             width: 500px;
             height: 265px;
             background-color: #f97316;
             padding: 2rem;
             margin: 1rem;
             border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        .card-date {
+            border: 1px solid black;
+            width: 50%;
+            margin-bottom: 8px;
+            margin-left: 10px;
+        }
+
+        .chip {
+            border: 1px solid black;
+            margin-bottom: 70px;
+            margin-left: 15px;
+            width: 50px;
+        }
+
+        .flag-container {
+            position: relative;
+            width: 70px;
+            height: 50px;
+            left: 350px;
+        }
+
+        .flag-card {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #EB001B;
+            /* Vermelho Mastercard */
+            left: 0;
+        }
+
+        .flag-card-2 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #F79E1B;
+            /* Laranja Mastercard */
+            left: 20px;
+            /* Sobreposição */
         }
 
         .button {
@@ -150,9 +200,43 @@
         </header>
 
         <div class="box-card">
-            <div class="card">cartão 1</div>
-            <div class="card">cartão 2</div>
-            <div class="card">cartão 3</div>
+            <div class="card">
+                <div class="chip">☰☰☰</div>
+                <div class="card-date">2020 1515 444 8965</div>
+                <div class="card-date">walfred Gusman</div>
+
+                <div class="flag-container">
+                    <div class="flag-card"></div>
+                    <div class="flag-card-2"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="chip">☰☰☰</div>
+
+                <div class="card-date">2020 1515 444 8965</div>
+                <div class="card-date">walfred Gusman</div>
+
+                <div class="flag-container">
+                    <div class="flag-card"></div>
+                    <div class="flag-card-2"></div>
+                </div>
+
+
+            </div>
+            <div class="card">
+
+                <div class="chip">☰☰☰</div>
+
+                <div class="card-date">2020 1515 444 8965</div>
+                <div class="card-date">walfred Gusman</div>
+
+                <div class="flag-container">
+                    <div class="flag-card"></div>
+                    <div class="flag-card-2"></div>
+                </div>
+
+
+            </div>
         </div>
 
         <div class="option">
