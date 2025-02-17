@@ -65,7 +65,13 @@
             flex-direction: row;
             justify-content: space-between;
             width: 100%;
-
+            flex-wrap: nowrap;
+            /* Mantém os cartões sempre na horizontal */
+            overflow-x: auto;
+            /* Permite rolagem horizontal caso necessário */
+            gap: 10px;
+            /* Adiciona espaçamento entre os cartões */
+            padding: 10px;
         }
 
         .option {
@@ -92,20 +98,21 @@
         }
 
         .card {
-
-            width: 500px;
+            min-width: 500px;
+            /* Garante um tamanho mínimo fixo para os cartões */
             height: 265px;
             background-color: #f97316;
             padding: 2rem;
-            margin: 1rem;
+            margin: 1rem 0;
             border-radius: 0.5rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-
             position: relative;
             font-family: Arial, Helvetica, sans-serif;
-
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
         }
 
         .card-date {
@@ -186,6 +193,64 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        /* Mantém os cartões na horizontal mesmo em telas menores */
+        @media (max-width: 400px) {
+            .box-card {
+                min-width: 95%;
+                flex-direction: row;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            .card {
+                min-width: 95%;
+                width: 100px;
+                height: 200px;
+
+
+
+            }
+
+            .card-date {
+                border: 1px solid black;
+                width: 180px;
+                
+                margin-left: -25px;
+            }
+
+            .chip {
+
+                margin-bottom: 10px;
+
+            }
+
+            .flag-container {
+                border: 1px solid black;
+                width: 70px;
+                height: 50px;
+                left: 180px;
+            }
+
+            .flag-card {
+                width: 25px;
+                height: 25px;
+    
+            }
+
+            .flag-card-2 {
+                width: 25px;
+                height: 25px;
+            }
+
+            .option {
+                width: 80%;
+            }
+
+            .option-select {
+                width: 40%;
+            }
         }
     </style>
 </head>
