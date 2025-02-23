@@ -201,6 +201,7 @@ input {
         opacity: 0;
     }
 }
+/*Respnsividade para telas pequenas*/
 @media (max-width: 400px) {
     body {
         display: flex;
@@ -279,6 +280,7 @@ input {
     }
 }
 
+/*Respnsividade para telas médias (tablets)*/
 @media (max-width: 770px) {
     body {
         display: flex;
