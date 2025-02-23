@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Dados de Clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .search-container input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Banco de Dados de Clientes</h1>
+    
+    <div class="search-container">
+        <input type="text" id="account-search" placeholder="Digite o número da conta">
+        <button onclick="searchAccount()">Buscar Cliente</button>
+    </div>
+
+    <table id="clients-table">
+        <thead>
+            <tr>
+                <th>Número da Conta</th>
+                <th>Primeiro Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>RG</th>
+                <th>Senha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>12345</td>
+                <td>João</td>
+                <td>Silva</td>
+                <td>joao.silva@email.com</td>
+                <td>(11) 98765-4321</td>
+                <td>123.456.789-00</td>
+                <td>12.345.678-9</td>
+                <td>senha123</td>
+            </tr>
+            <tr>
+                <td>23456</td>
+                <td>Maria</td>
+                <td>Oliveira</td>
+                <td>maria.oliveira@email.com</td>
+                <td>(21) 99876-5432</td>
+                <td>234.567.890-01</td>
+                <td>23.456.789-0</td>
+                <td>senha456</td>
+            </tr>
+            <tr>
+                <td>34567</td>
+                <td>Carlos</td>
+                <td>Souza</td>
+                <td>carlos.souza@email.com</td>
+                <td>(31) 98765-1234</td>
+                <td>345.678.901-02</td>
+                <td>34.567.890-1</td>
+                <td>senha789</td>
+            </tr>
+            <tr>
+                <td>45678</td>
+                <td>Ana</td>
+                <td>Costa</td>
+                <td>ana.costa@email.com</td>
+                <td>(41) 97654-3210</td>
+                <td>456.789.012-03</td>
+                <td>45.678.901-2</td>
+                <td>senha1011</td>
+            </tr>
+            <tr>
+                <td>56789</td>
+                <td>Felipe</td>
+                <td>Pereira</td>
+                <td>felipe.pereira@email.com</td>
+                <td>(51) 96543-2109</td>
+                <td>567.890.123-04</td>
+                <td>56.789.012-3</td>
+                <td>senha1213</td>
+            </tr>
+            <tr>
+                <td>67890</td>
+                <td>Juliana</td>
+                <td>Lima</td>
+                <td>juliana.lima@email.com</td>
+                <td>(61) 95432-1098</td>
+                <td>678.901.234-05</td>
+                <td>67.890.123-4</td>
+                <td>senha1415</td>
+            </tr>
+            <tr>
+                <td>78901</td>
+                <td>Lucas</td>
+                <td>Almeida</td>
+                <td>lucas.almeida@email.com</td>
+                <td>(71) 94321-0987</td>
+                <td>789.012.345-06</td>
+                <td>78.901.234-5</td>
+                <td>senha1617</td>
+            </tr>
+            <tr>
+                <td>89012</td>
+                <td>Carla</td>
+                <td>Rodrigues</td>
+                <td>carla.rodrigues@email.com</td>
+                <td>(81) 93210-9876</td>
+                <td>890.123.456-07</td>
+                <td>89.012.345-6</td>
+                <td>senha1819</td>
+            </tr>
+            <tr>
+                <td>90123</td>
+                <td>Rafael</td>
+                <td>Martins</td>
+                <td>rafael.martins@email.com</td>
+                <td>(91) 92109-8765</td>
+                <td>901.234.567-08</td>
+                <td>90.123.456-7</td>
+                <td>senha2021</td>
+            </tr>
+            <tr>
+                <td>01234</td>
+                <td>Letícia</td>
+                <td>Fernandes</td>
+                <td>leticia.fernandes@email.com</td>
+                <td>(61) 91098-7654</td>
+                <td>012.345.678-90</td>
+                <td>01.234.567-8</td>
+                <td>senha2223</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function searchAccount() {
+            const accountSearch = document.getElementById('account-search').value;
+            const rows = document.querySelectorAll('#clients-table tbody tr');
+            
+            let found = false;
+            rows.forEach(row => {
+                const accountNumber = row.cells[0].textContent;
+                if (accountNumber === accountSearch) {
+                    row.style.backgroundColor = '#D96941';  // Destacar a linha encontrada
+                    found = true;
+                } else {
+                    row.style.backgroundColor = '';  // Limpar o destaque
+                }
+            });
+
+            if (!found) {
+                alert('Número da conta não encontrado!');
+            }
+        }
+    </script>
+</body>
+</html>
