@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Banco Digital</title>
+    <script src="banco.js"></script> <!-- Inclui o "banco de dados" -->
+    <script>
+        function validarLogin(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            const usuario = document.getElementById("username").value;
+            const senha = document.getElementById("password").value;
+
+            if (bancoDeDados[usuario] && bancoDeDados[usuario].senha === senha) {
+                // Se a validação for bem-sucedida, redireciona para a home do usuário
+                window.location.href = bancoDeDados[usuario].home;
+            } else {
+                alert("Usuário ou senha incorretos. Tente novamente.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login no Banco Digital</h2>
+        <form onsubmit="validarLogin(event)">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

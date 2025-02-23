@@ -6,6 +6,7 @@
     <title>Tela de login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="banco.js"></script> <!-- Inclui o "banco de dados" -->
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -89,6 +90,24 @@
                 window.location.href = '../database/database.html';  // Substitua pelo nome do seu arquivo de banco de dados
             } else {
                 alert("Credenciais incorretas! Tente novamente.");
+            }
+        });
+
+
+        //função para validar o login e direcionar o usuario para sua pagina especifica
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtendo os valores do formulário
+            const accountNumber = document.getElementById('account-number').value;
+            const password = document.getElementById('password').value;
+
+            // Verificando se o número da conta e a senha estão corretos
+            if (bancoDeDados[accountNumber] && bancoDeDados[accountNumber].senha === password) {
+                // Redirecionando para a página home correspondente
+                window.location.href = bancoDeDados[accountNumber].home;
+            } else {
+                alert("Número da conta ou senha incorretos. Tente novamente.");
             }
         });
     </script>
