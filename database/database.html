@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,39 +12,49 @@
             margin: 0;
             padding: 0;
         }
+
         h1 {
             text-align: center;
             margin-top: 20px;
         }
+
         table {
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
             background-color: #fff;
         }
-        th, td {
+
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
         }
+
         th {
             background-color: #4CAF50;
             color: white;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
         tr:hover {
             background-color: #ddd;
         }
+
         .search-container {
             text-align: center;
             margin: 20px;
         }
+
         .search-container input {
             padding: 10px;
             font-size: 16px;
         }
+
         .search-container button {
             padding: 10px;
             font-size: 16px;
@@ -54,9 +65,10 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Banco de Dados de Clientes</h1>
-    
+
     <div class="search-container">
         <input type="text" id="account-search" placeholder="Digite o número da conta">
         <button onclick="searchAccount()">Buscar Cliente</button>
@@ -176,6 +188,8 @@
                 <td>01.234.567-8</td>
                 <td>senha2223</td>
             </tr>
+
+
         </tbody>
     </table>
 
@@ -183,7 +197,7 @@
         function searchAccount() {
             const accountSearch = document.getElementById('account-search').value;
             const rows = document.querySelectorAll('#clients-table tbody tr');
-            
+
             let found = false;
             rows.forEach(row => {
                 const accountNumber = row.cells[0].textContent;
@@ -199,6 +213,32 @@
                 alert('Número da conta não encontrado!');
             }
         }
+
+        // Insere na tabela os novos usuários armazenados
+        window.addEventListener('load', function () {
+            // Carregar os clientes do localStorage
+            const clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+            const table = document.getElementById('clients-table').getElementsByTagName('tbody')[0];
+
+            // Preencher a tabela com os dados dos clientes
+            clientes.forEach(cliente => {
+                const newRow = table.insertRow();
+
+                newRow.innerHTML = `
+                <td>${cliente.numeroConta}</td>
+                <td>${cliente.primeiroNome}</td>
+                <td>${cliente.sobrenome}</td>
+                <td>${cliente.email}</td>
+                <td>${cliente.telefone}</td>
+                <td>${cliente.cpf}</td>
+                <td>${cliente.rg}</td>
+                <td>${cliente.senha}</td>
+                `;
+            });
+        });
+
     </script>
 </body>
+
 </html>

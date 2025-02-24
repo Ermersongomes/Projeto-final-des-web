@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro-1.css">
     <title>Tela de Cadastro</title>
 </head>
+
 <body>
     <main>
         <form id="formCadastro">
@@ -13,23 +15,27 @@
             <section class="form-container">
                 <div class="form-1">
                     <label for="primeiro-nome">Primeiro nome:</label><br>
-                    <input class="input-1" type="text" id="primeiro-nome" name="primeiro_nome" placeholder="Digite seu primeiro nome" required><br>
-                    
+                    <input class="input-1" type="text" id="primeiro-nome" name="primeiro_nome"
+                        placeholder="Digite seu primeiro nome" required><br>
+
                     <label for="sobrenome">Sobrenome:</label><br>
-                    <input class="input-1" type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" required><br>
-                    
+                    <input class="input-1" type="text" id="sobrenome" name="sobrenome"
+                        placeholder="Digite seu sobrenome" required><br>
+
                     <label for="email">E-mail:</label><br>
-                    <input class="input-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" required><br>
-                    
+                    <input class="input-1" type="email" id="email" name="email" placeholder="Digite seu e-mail"
+                        required><br>
+
                     <label for="telefone">N° telefone:</label><br>
-                    <input class="input-1" type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required><br>
+                    <input class="input-1" type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone"
+                        required><br>
                 </div>
             </section>
             <button type="submit" class="btn-proximo">Próximo</button>
         </form>
     </main>
     <script>
-        document.getElementById('formCadastro').addEventListener('submit', function(event) {
+        document.getElementById('formCadastro').addEventListener('submit', function (event) {
             // Impede o envio do formulário
             event.preventDefault();
 
@@ -50,6 +56,32 @@
             window.location.href = '/register-2/cadastro-2.html';
 
         });
+
+        //guarda as informações para serem eviadas
+        document.getElementById('formCadastro').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const primeiroNome = document.getElementById('primeiro-nome').value.trim();
+            const sobrenome = document.getElementById('sobrenome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+
+            if (primeiroNome === '' || sobrenome === '' || email === '' || telefone === '') {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            // Salva os dados no localStorage
+            localStorage.setItem('primeiroNome', primeiroNome);
+            localStorage.setItem('sobrenome', sobrenome);
+            localStorage.setItem('email', email);
+            localStorage.setItem('telefone', telefone);
+
+            // Redireciona para a próxima página
+            window.location.href = '/register-2/cadastro-2.html';
+        });
+
     </script>
 </body>
+
 </html>

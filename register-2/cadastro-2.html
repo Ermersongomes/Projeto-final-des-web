@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro-2.css">
     <title>Tela de Cadastro - Informações Adicionais</title>
 </head>
+
 <body>
     <main>
         <form id="formCadastro2">
@@ -14,15 +16,17 @@
                 <div class="form-1">
                     <label for="cpf">CPF:</label>
                     <input class="input-1" type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
-                    
+
                     <label for="rg">RG:</label>
                     <input class="input-1" type="text" id="rg" name="rg" placeholder="Digite seu RG" required>
-                    
+
                     <label for="senha"> Crie uma Senha:</label>
-                    <input class="input-1" type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-                    
+                    <input class="input-1" type="password" id="senha" name="senha" placeholder="Digite sua senha"
+                        required>
+
                     <label for="confirma-senha">Confirma Senha:</label>
-                    <input class="input-1" type="password" id="confirma-senha" name="confirma_senha" placeholder="Confirme sua senha" required>
+                    <input class="input-1" type="password" id="confirma-senha" name="confirma_senha"
+                        placeholder="Confirme sua senha" required>
                 </div>
 
                 <div class="genero-container">
@@ -43,44 +47,93 @@
     </main>
     <script>
 
-        document.getElementById('formCadastro2').addEventListener('submit', function(event) {
-    
+        document.getElementById('formCadastro2').addEventListener('submit', function (event) {
+
             event.preventDefault();
-    
-    
+
+
             const cpf = document.getElementById('cpf').value.trim();
-    
+
             const rg = document.getElementById('rg').value.trim();
-    
+
             const senha = document.getElementById('senha').value.trim();
-    
+
             const confirmaSenha = document.getElementById('confirma-senha').value.trim();
-    
-    
+
+
             if (cpf === '' || rg === '' || senha === '' || confirmaSenha === '') {
-    
+
                 alert('Por favor, preencha todos os campos obrigatórios.');
-    
+
                 return;
-    
+
             }
-    
+
 
             if (senha !== confirmaSenha) {
-    
+
                 alert('As senhas não coincidem. Tente novamente.');
-    
+
                 return;
-    
+
             }
-    
-    
+
+
             alert('Formulário enviado com sucesso!');
-    
+
             this.submit(); // Envia o formulário
-    
+
         });
-    
+
+        //junda as informações da pagina anterio para enviar ao banco de dados
+        // Juntar os dados para salvar no localStorage
+        document.getElementById('formCadastro2').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const cpf = document.getElementById('cpf').value.trim();
+            const rg = document.getElementById('rg').value.trim();
+            const senha = document.getElementById('senha').value.trim();
+            const confirmaSenha = document.getElementById('confirma-senha').value.trim();
+            const genero = document.querySelector('input[name="genero"]:checked')?.value;
+
+            if (cpf === '' || rg === '' || senha === '' || confirmaSenha === '' || !genero) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            if (senha !== confirmaSenha) {
+                alert('As senhas não coincidem. Tente novamente.');
+                return;
+            }
+
+            // Obter os dados armazenados no localStorage
+            let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+            // Criar um novo objeto de cliente
+            const novoCliente = {
+                primeiroNome: localStorage.getItem('primeiroNome'),
+                sobrenome: localStorage.getItem('sobrenome'),
+                email: localStorage.getItem('email'),
+                telefone: localStorage.getItem('telefone'),
+                cpf: cpf,
+                rg: rg,
+                senha: senha,
+                genero: genero,
+                numeroConta: Math.floor(Math.random() * 100000), // Gerar número de conta único
+            };
+
+            // Adicionar o novo cliente ao array de clientes
+            clientes.push(novoCliente);
+
+            // Salvar novamente os clientes no localStorage
+            localStorage.setItem('clientes', JSON.stringify(clientes));
+
+            // Redirecionar para a página do banco de dados
+            window.location.href = '/register-3/banco-de-dados.html';
+        });
+
+
     </script>
 </body>
+
 </html>
